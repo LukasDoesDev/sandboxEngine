@@ -2,6 +2,7 @@ package engine.io;
 
 import engine.maths.Vector3f;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWFramebufferSizeCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
 import org.lwjgl.opengl.GL;
@@ -31,7 +32,7 @@ public class Window
 
     private Vector3f background = new Vector3f(0, 0, 0);
 
-    private GLFWWindowSizeCallback sizeCallback;
+    private GLFWFramebufferSizeCallback sizeCallback;
 
     private boolean isResized;
 
@@ -93,7 +94,7 @@ public class Window
 
     private void createCallbacks()
     {
-        sizeCallback = new GLFWWindowSizeCallback() {
+        sizeCallback = new GLFWFramebufferSizeCallback() {
             @Override
             public void invoke(long window, int w, int h) {
                 width = w;
@@ -105,7 +106,7 @@ public class Window
         GLFW.glfwSetCursorPosCallback(window, input.getMouseMoveCallback());
         GLFW.glfwSetMouseButtonCallback(window, input.getMouseButtonsCallback());
         GLFW.glfwSetScrollCallback(window, input.getMouseScrollCallback());
-        GLFW.glfwSetWindowSizeCallback(window, sizeCallback);
+        GLFW.glfwSetFramebufferSizeCallback(window, sizeCallback);
     }
 
     public void update()
@@ -156,7 +157,6 @@ public class Window
     public void setFullscreen(boolean isFullscreen)
     {
         this.isFullscreen = isFullscreen;
-        isResized = true;
         GL11.glViewport(0, 0, width, height);
         if (isFullscreen)
         {
