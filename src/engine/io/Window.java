@@ -17,6 +17,8 @@ public class Window
 
     private int savedPosX, savedPosY;    //
 
+    private GLFWVidMode videoMode;
+
     private String title;
 
     private long window;
