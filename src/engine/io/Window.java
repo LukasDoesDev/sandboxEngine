@@ -152,6 +152,14 @@ public class Window
         background.set(r, g, b);
     }
 
+    public boolean isResized() {
+        return isResized;
+    }
+
+    public void setResized(boolean resized) {
+        isResized = resized;
+    }
+
     public boolean isFullscreen() { return isFullscreen; }
 
     public void setFullscreen(boolean isFullscreen)
