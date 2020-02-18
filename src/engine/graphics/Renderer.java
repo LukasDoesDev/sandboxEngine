@@ -6,6 +6,8 @@ import org.lwjgl.opengl.GL30;
 
 import engine.io.Window;
 
+import static org.lwjgl.opengl.GL11.glViewport;
+
 public class Renderer {
     private Shader shader;
 
