@@ -17,8 +17,6 @@ public class Window
 
     private int savedPosX, savedPosY;    //
 
-    private GLFWVidMode videoMode;
-
     private String title;
 
     private long window;
@@ -74,7 +72,7 @@ public class Window
 
 
 
-        GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
+        videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
         windowPosX[0] = ((videoMode.width() - width) / 2);
         windowPosY[0] = ((videoMode.height() - height) / 2);
         GLFW.glfwSetWindowPos(window, windowPosX[0], windowPosY[0]);
