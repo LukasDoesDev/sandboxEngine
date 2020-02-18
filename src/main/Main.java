@@ -72,7 +72,6 @@ public class Main implements Runnable
 
 
 
-
     private void update()
     {
         window.update();
