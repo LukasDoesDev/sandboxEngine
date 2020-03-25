@@ -82,7 +82,7 @@ public class Main implements Runnable
 
     private void render()
     {
-        renderer.render(window, mesh);
+        renderer.renderMesh(mesh);
         window.swapBuffers();
         // Render
     }

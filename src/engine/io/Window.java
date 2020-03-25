@@ -128,15 +128,9 @@ public class Window
         }
     }
 
-    public void swapBuffers()
-    {
-        GLFW.glfwSwapBuffers(window);
-    }
+    public void swapBuffers() { GLFW.glfwSwapBuffers(window); }
 
-    public boolean shouldClose()
-    {
-        return GLFW.glfwWindowShouldClose(window);
-    }
+    public boolean shouldClose() { return GLFW.glfwWindowShouldClose(window); }
 
     public void destroy()
     {
@@ -147,18 +141,10 @@ public class Window
         GLFW.glfwTerminate();
     }
 
-    public void setBackgroundColor(float r, float g, float b)
-    {
-        background.set(r, g, b);
-    }
+    public void setBackgroundColor(float r, float g, float b) { background.set(r, g, b); }
 
-    public boolean isResized() {
-        return isResized;
-    }
-
-    public void setResized(boolean resized) {
-        isResized = resized;
-    }
+    public boolean isResized() { return isResized; }
+    public void setResized(boolean resized) { isResized = resized; }
 
     public boolean isFullscreen() { return isFullscreen; }
 

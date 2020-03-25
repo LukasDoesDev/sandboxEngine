@@ -28,7 +28,7 @@ public class Renderer {
         shader.unbind();
     }
 
-    private void renderMesh(Mesh mesh) {
+    public void renderMesh(Mesh mesh) {
         GL30.glBindVertexArray(mesh.getVAO());
         GL30.glEnableVertexAttribArray(0);
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, mesh.getIBO());
