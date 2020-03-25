@@ -1,5 +1,6 @@
 package engine.graphics;
 
+import engine.logging.ConsoleOutput;
 import engine.utils.FileUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -27,7 +28,7 @@ public class Shader
 
         if (GL20.glGetShaderi(vertexID, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE)
         {
-            System.err.println("Vertex Shader: " + GL20.glGetShaderInfoLog(vertexID));
+            ConsoleOutput.printError("Vertex Shader: " + GL20.glGetShaderInfoLog(vertexID));
             return;
         }
 
@@ -38,7 +39,7 @@ public class Shader
 
         if (GL20.glGetShaderi(fragmentID, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE)
         {
-            System.err.println("Fragment Shader: " + GL20.glGetShaderInfoLog(fragmentID));
+            ConsoleOutput.printError("Fragment Shader: " + GL20.glGetShaderInfoLog(fragmentID));
             return;
         }
 
@@ -49,14 +50,14 @@ public class Shader
         GL20.glLinkProgram(programID);
         if (GL20.glGetProgrami(programID, GL20.GL_LINK_STATUS) == GL11.GL_FALSE)
         {
-            System.err.println("Program Linking: " + GL20.glGetProgramInfoLog(programID));
+            ConsoleOutput.printError("Program Linking: " + GL20.glGetProgramInfoLog(programID));
             return;
         }
 
         GL20.glValidateProgram(programID);
         if (GL20.glGetProgrami(programID, GL20.GL_VALIDATE_STATUS) == GL11.GL_FALSE)
         {
-            System.err.println("Program Validation: " + GL20.glGetProgramInfoLog(programID));
+            ConsoleOutput.printError("Program Validation: " + GL20.glGetProgramInfoLog(programID));
             return;
         }
 

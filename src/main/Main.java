@@ -6,6 +6,7 @@ import engine.graphics.Shader;
 import engine.graphics.Vertex;
 import engine.io.Input;
 import engine.io.Window;
+import engine.logging.ConsoleOutput;
 import engine.maths.Vector3f;
 import org.lwjgl.glfw.GLFW;
 
@@ -40,7 +41,7 @@ public class Main implements Runnable
 
     public void init()
     {
-        System.out.println("Initializing sandboxer!");
+        ConsoleOutput.printMessage("Initializing sandboxer!");
         window = new Window(WIDTH, HEIGHT, "sandboxer");
         shader = new Shader("/shaders/mainVertex.glsl", "/shaders/mainFragment.glsl");
         renderer = new Renderer(shader);
@@ -52,7 +53,8 @@ public class Main implements Runnable
         // TODO: Set up menus, etc.
 
 
-        System.out.println("Finished initializing!");
+
+        ConsoleOutput.printMessage("Finished initializing!");
     }
 
 
@@ -66,7 +68,7 @@ public class Main implements Runnable
             render();
             if (Input.isKeyDown(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
         }
-        System.out.println("Exited Game.");
+        ConsoleOutput.printMessage("Exited Game.");
         window.destroy(); // Destroys Input callbacks and closes window
     }
 

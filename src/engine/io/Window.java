@@ -1,5 +1,6 @@
 package engine.io;
 
+import engine.logging.ConsoleOutput;
 import engine.maths.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallback;
@@ -54,10 +55,10 @@ public class Window
 
         if (!GLFW.glfwInit())
         {
-            System.err.println("FATAL ERROR: Failed initializing GLFW");
+            ConsoleOutput.printError("Failed initializing GLFW");
             return;
         } else {
-            System.out.println("Initialized GLFW");
+            ConsoleOutput.printMessage("Initialized GLFW");
         }
 
 
@@ -69,7 +70,7 @@ public class Window
 
         if (window == 0)
         {
-            System.err.println("FATAL ERROR: Failed creating window");
+            ConsoleOutput.printError("Failed creating window");
             return;
         }
 

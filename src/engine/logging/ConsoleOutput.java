@@ -13,6 +13,7 @@ public class ConsoleOutput {
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
+                        + "INFO: " + message
         );
     }
 
@@ -26,6 +27,7 @@ public class ConsoleOutput {
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
+                        + "ERROR: " + errorMessage
         );
     }
 
@@ -39,8 +41,8 @@ public class ConsoleOutput {
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
+                        + "EXEPTION: "
         );
         excp.printStackTrace();
     }
 }
-// getMonth
