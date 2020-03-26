@@ -152,7 +152,6 @@ public class Window
     public void setFullscreen(boolean isFullscreen)
     {
         this.isFullscreen = isFullscreen;
-        GL11.glViewport(0, 0, width, height);
         if (isFullscreen)
         {
             GLFW.glfwGetWindowPos(window, windowPosX, windowPosY);
