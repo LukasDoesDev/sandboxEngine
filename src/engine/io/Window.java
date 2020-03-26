@@ -62,8 +62,6 @@ public class Window
         }
 
 
-
-        input = new Input();
         window = GLFW.glfwCreateWindow(width, height, title, isFullscreen ? GLFW.glfwGetPrimaryMonitor() : 0, 0);
 
 
@@ -135,7 +133,7 @@ public class Window
 
     public void destroy()
     {
-        input.destory();
+        input.destroy();
         sizeCallback.free();
         GLFW.glfwWindowShouldClose(window);
         GLFW.glfwDestroyWindow(window);

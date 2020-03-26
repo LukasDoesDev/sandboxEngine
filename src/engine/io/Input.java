@@ -15,12 +15,12 @@ public class Input {
     private static double mouseX, mouseY;
     private static double scrollX, scrollY;
 
-    private GLFWKeyCallback keyboard;
-    private GLFWCursorPosCallback mouseMove;
-    private GLFWMouseButtonCallback mouseButtons;
-    private GLFWScrollCallback mouseScroll;
+    private static GLFWKeyCallback keyboard;
+    private static GLFWCursorPosCallback mouseMove;
+    private static GLFWMouseButtonCallback mouseButtons;
+    private static GLFWScrollCallback mouseScroll;
 
-    public Input() {
+    public static void init() {
         keyboard = new GLFWKeyCallback() {
             @Override
             public void invoke(long window, int key, int scancode, int action, int mods) {
@@ -59,13 +59,13 @@ public class Input {
      * <p>
      * Should be called right after querying key inputs for a frame.
      */
-    public void update()
+    public static void update()
     {
         resetKeyboard();
         resetMouse();
     }
 
-    private void resetKeyboard()
+    private static void resetKeyboard()
     {
         for(int i = 0; i < keyStates.length; i++)
         {
@@ -73,7 +73,7 @@ public class Input {
         }
     }
 
-    private void resetMouse()
+    private static void resetMouse()
     {
         for(int i = 0; i < buttonStates.length; i++)
         {
@@ -132,7 +132,7 @@ public class Input {
     }
 
 
-    public void destory()
+    public void destroy()
     {
         keyboard.free();
         mouseMove.free();
