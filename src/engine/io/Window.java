@@ -101,10 +101,10 @@ public class Window
                 isResized = true;
             }
         };
-        GLFW.glfwSetKeyCallback(window, input.getKeyboardCallback());
-        GLFW.glfwSetCursorPosCallback(window, input.getMouseMoveCallback());
-        GLFW.glfwSetMouseButtonCallback(window, input.getMouseButtonsCallback());
-        GLFW.glfwSetScrollCallback(window, input.getMouseScrollCallback());
+        GLFW.glfwSetKeyCallback(window, Input.getKeyboardCallback());
+        GLFW.glfwSetCursorPosCallback(window, Input.getMouseMoveCallback());
+        GLFW.glfwSetMouseButtonCallback(window, Input.getMouseButtonsCallback());
+        GLFW.glfwSetScrollCallback(window, Input.getMouseScrollCallback());
         GLFW.glfwSetFramebufferSizeCallback(window, sizeCallback);
     }
 
@@ -133,7 +133,7 @@ public class Window
 
     public void destroy()
     {
-        input.destroy();
+        Input.destroy();
         sizeCallback.free();
         GLFW.glfwWindowShouldClose(window);
         GLFW.glfwDestroyWindow(window);
@@ -150,7 +150,7 @@ public class Window
     public void setFullscreen(boolean isFullscreen)
     {
         this.isFullscreen = isFullscreen;
-        ConsoleOutput.printMessage("setFullscreen run, bool isFullscreen: " + this.isFullscreen);
+        ConsoleOutput.printMessage("setFullscreen() run (bool isFullscreen: " + this.isFullscreen + ")");
         if (isFullscreen)
         {
             GLFW.glfwGetWindowPos(window, windowPosX, windowPosY);

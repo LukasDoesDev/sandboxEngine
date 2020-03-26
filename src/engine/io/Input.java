@@ -1,6 +1,9 @@
 package engine.io;
 
+import engine.logging.ConsoleOutput;
 import org.lwjgl.glfw.*;
+
+import java.io.Console;
 
 public class Input {
     private static final int NO_STATE = -1;
@@ -132,50 +135,34 @@ public class Input {
     }
 
 
-    public void destroy()
+    public static void destroy()
     {
+        ConsoleOutput.printMessage("input.destroy()");
+        if (keyboard == null)
+        {
+            ConsoleOutput.printMessage("keyboard is null");
+        }
         keyboard.free();
         mouseMove.free();
         mouseButtons.free();
         mouseScroll.free();
     }
 
-    public static double getMouseX()
-    {
-        return mouseX;
-    }
+    public static double getMouseX() { return mouseX; }
 
-    public static double getMouseY()
-    {
-        return mouseY;
-    }
+    public static double getMouseY() { return mouseY; }
 
-    public static double getScrollX()
-    {
-        return scrollX;
-    }
+    public static double getScrollX() { return scrollX; }
 
-    public static double getScrollY()
-    {
-        return scrollY;
-    }
+    public static double getScrollY() { return scrollY; }
 
-    public GLFWKeyCallback getKeyboardCallback()
-    {
-        return keyboard;
-    }
+    public static GLFWKeyCallback getKeyboardCallback() { return keyboard; }
 
-    public GLFWCursorPosCallback getMouseMoveCallback()
-    {
-        return mouseMove;
-    }
+    public static GLFWCursorPosCallback getMouseMoveCallback() { return mouseMove; }
 
-    public GLFWMouseButtonCallback getMouseButtonsCallback()
-    {
-        return mouseButtons;
-    }
+    public static GLFWMouseButtonCallback getMouseButtonsCallback() { return mouseButtons; }
 
-    public GLFWScrollCallback getMouseScrollCallback() { return mouseScroll; }
+    public static GLFWScrollCallback getMouseScrollCallback() { return mouseScroll; }
 
 
 

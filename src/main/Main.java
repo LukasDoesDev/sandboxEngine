@@ -8,7 +8,10 @@ import engine.io.Input;
 import engine.io.Window;
 import engine.logging.ConsoleOutput;
 import engine.maths.Vector3f;
+import engine.utils.Color;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.Arrays;
 
 public class Main implements Runnable
 {
@@ -45,10 +48,16 @@ public class Main implements Runnable
         window = new Window(WIDTH, HEIGHT, "sandboxer");
         shader = new Shader("/shaders/mainVertex.glsl", "/shaders/mainFragment.glsl");
         renderer = new Renderer(shader);
+
+        int[] color = Color.hex2rgb("443737");
+        String colorString = Arrays.toString(color);
+        ConsoleOutput.printMessage(colorString);
+
         window.setBackgroundColor(0.7450980392156863f, 0.5568627450980392f, 0.0823529411764706f);
         window.create();
         mesh.create();
         shader.create();
+        Input.init();
 
         // TODO: Set up menus, etc.
 
