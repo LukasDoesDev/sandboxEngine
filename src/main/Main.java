@@ -53,7 +53,7 @@ public class Main implements Runnable
         String colorString = Arrays.toString(color);
         ConsoleOutput.printMessage(colorString);
 
-        window.setBackgroundColor(0.7450980392156863f, 0.5568627450980392f, 0.0823529411764706f);
+        window.setBackgroundColor(color[0], color[1], color[2]);
         window.create();
         mesh.create();
         shader.create();
