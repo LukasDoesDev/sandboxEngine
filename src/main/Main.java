@@ -66,7 +66,7 @@ public class Main implements Runnable
         {
             update();
             render();
-            if (Input.isKeyDown(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
+            if (Input.isKeyPressed(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
         }
         ConsoleOutput.printMessage("Exited Game.");
         window.destroy(); // Destroys Input callbacks and closes window
