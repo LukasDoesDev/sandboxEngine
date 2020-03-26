@@ -89,10 +89,13 @@ public class Main implements Runnable
         // Render
     }
 
+    public void queryKeyInputs() {
 
-    public static void main(String[] args)
-    {
-        new Main().start();
+        Input.update();
     }
+
+
+
+    public static void main(String[] args) { new Main().start(); }
 
 }
