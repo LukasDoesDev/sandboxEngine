@@ -16,12 +16,9 @@ public class Vector3f
         this.z = z;
     }
 
-    public void setX() { this.x = x; }
     public float getX() { return x; }
 
-    public void setY() { this.y = y; }
     public float getY() { return y; }
 
-    public void setZ() { this.z = z; }
     public float getZ() { return z; }
 }
