@@ -28,7 +28,7 @@ public class Main implements Runnable
     }, new int[] {
             0, 1, 2,
             0, 3, 2
-    }, new Material("/textures/blocks/memory.png"));
+    }, new Material("/textures/blocks/beautiful.png"));
 
 
 

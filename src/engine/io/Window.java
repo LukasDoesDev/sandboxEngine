@@ -149,7 +149,7 @@ public class Window
     public void setFullscreen(boolean isFullscreen)
     {
         this.isFullscreen = isFullscreen;
-        ConsoleOutput.printMessage("setFullscreen() run (bool isFullscreen: " + this.isFullscreen + ")");
+        ConsoleOutput.printMessage("setFullscreen() got ran! (bool isFullscreen: " + this.isFullscreen + ")");
         if (isFullscreen)
         {
             GLFW.glfwGetWindowPos(window, windowPosX, windowPosY);
