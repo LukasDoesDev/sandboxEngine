@@ -23,10 +23,10 @@ public class Main implements Runnable
     public static  final int WIDTH = 1280, HEIGHT = 720;
 
     public Mesh mesh = new Mesh(new Vertex[] {
-            new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f)),
-            new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f)),
-            new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f)),
-            new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f))
+            new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f)),
+            new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f)),
+            new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f)),
+            new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f))
     }, new int[] {
             0, 1, 2,
             0, 3, 2
@@ -80,8 +80,8 @@ public class Main implements Runnable
             render();
             queryKeyInputs();
         }
+        close();
         ConsoleOutput.printMessage("Exited Game.");
-        window.destroy(); // Destroys Input callbacks and closes window
     }
 
 
@@ -106,6 +106,14 @@ public class Main implements Runnable
         if (Input.isKeyPressed(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
 
         Input.update();
+    }
+
+    private void close()
+    {
+        window.destroy(); // Destroys Input callbacks and closes window
+        mesh.destroy();
+        shader.destroy();
+
     }
 
 
