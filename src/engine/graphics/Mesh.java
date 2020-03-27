@@ -25,7 +25,7 @@ public class Mesh
 
     public void create()
     {
-        material.create();
+        //material.create();
 
         vao = GL30.glGenVertexArrays();
         GL30.glBindVertexArray(vao);
@@ -101,7 +101,7 @@ public class Mesh
 
         GL30.glDeleteVertexArrays(vao);
 
-        material.destroy();
+        material.getTexture().cleanUp();
     }
 
 

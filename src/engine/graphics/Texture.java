@@ -22,13 +22,15 @@ public class Texture {
     {
         ByteBuffer buf;
 
-        try(MemoryStack stack = MemoryStack.stackPush()) {
+        try(MemoryStack stack = MemoryStack.stackPush())
+        {
             IntBuffer w = stack.mallocInt(1);
             IntBuffer h = stack.mallocInt(1);
             IntBuffer channels = stack.mallocInt(1);
 
             buf = stbi_load(fileName, w, h, channels, 4);
-            if(buf == null) {
+            if(buf == null)
+            {
                 ConsoleOutput.printException(new Exception("Image file [" + fileName + "] not loaded: " + stbi_failure_reason()));
             }
 
@@ -41,7 +43,8 @@ public class Texture {
         stbi_image_free(buf);
     }
 
-    private int createTexture(ByteBuffer buf) {
+    private int createTexture(ByteBuffer buf)
+    {
         int textureID = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, textureID);
 
@@ -60,15 +63,18 @@ public class Texture {
 
 
 
-    public void bind() {
+    public void bind()
+    {
         glBindTexture(GL_TEXTURE_2D, id);
     }
 
-    public void unbind() {
+    public void unbind()
+    {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    public void cleanUp() {
+    public void cleanUp()
+    {
         unbind();
         glDeleteTextures(id);
     }

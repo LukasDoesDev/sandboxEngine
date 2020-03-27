@@ -23,6 +23,11 @@ public class Material
 
     private Material mat = new Material("a");
 
+    public void destroy()
+    {
+        texture.cleanUp();
+    }
+
 
 
 }
