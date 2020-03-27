@@ -42,15 +42,9 @@ public class Material
     }
 
 
-    public float getWidth() {
-        return width;
-    }
+    public float getWidth() { return width; }
 
-    public float getHeight() {
-        return height;
-    }
+    public float getHeight() { return height; }
 
-    public int getTextureID() {
-        return textureID;
-    }
+    public int getTextureID() { return textureID; }
 }
