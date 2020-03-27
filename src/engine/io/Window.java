@@ -2,10 +2,7 @@ package engine.io;
 
 import engine.logging.ConsoleOutput;
 import engine.maths.Vector3f;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWFramebufferSizeCallback;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWWindowSizeCallback;
+import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
@@ -134,7 +131,7 @@ public class Window
     public void destroy()
     {
         Input.destroy();
-        sizeCallback.free();
+        Callbacks.glfwFreeCallbacks(window);
         GLFW.glfwWindowShouldClose(window);
         GLFW.glfwDestroyWindow(window);
         GLFW.glfwTerminate();
