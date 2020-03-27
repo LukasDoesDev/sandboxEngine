@@ -21,8 +21,6 @@ public class Material
     public Texture getTexture() { return texture; }
 
 
-    private Material mat = new Material("a");
-
     public void destroy()
     {
         texture.cleanUp();
