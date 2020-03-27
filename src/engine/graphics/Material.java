@@ -4,7 +4,6 @@ import engine.logging.ConsoleOutput;
 import engine.graphics.Texture;
 import static org.lwjgl.opengl.GL46.*;
 import org.lwjgl.system.MemoryStack;
-import static org.lwjgl.stb.STBImage.*;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -20,6 +19,9 @@ public class Material
 
     }
     public Texture getTexture() { return texture; }
+
+
+    private Material mat = new Material("a");
 
 
 
