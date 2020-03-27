@@ -146,7 +146,6 @@ public class Window
     public void setResized(boolean resized) { isResized = resized; }
 
     public boolean isFullscreen() { return isFullscreen; }
-
     public void setFullscreen(boolean isFullscreen)
     {
         this.isFullscreen = isFullscreen;
