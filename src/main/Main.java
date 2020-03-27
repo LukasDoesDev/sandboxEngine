@@ -20,18 +20,6 @@ public class Main implements Runnable
     public Shader shader;
     public static  final int WIDTH = 1280, HEIGHT = 720;
 
-    public Mesh mesh = new Mesh(new Vertex[] {
-            new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f), new Vector2f(0.0f, 0.0f)),
-            new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f), new Vector2f(0.0f, 1.0f)),
-            new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f), new Vector2f(1.0f, 1.0f)),
-            new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f), new Vector2f(1.0f, 0.0f))
-    }, new int[] {
-            0, 1, 2,
-            0, 3, 2
-    }, new Material("/textures/blocks/beautiful.png"));
-
-
-
     public void start()
     {
         game = new Thread(this,"game");
@@ -56,11 +44,20 @@ public class Main implements Runnable
 
         window.setBackgroundColor((color[0] / 255.0f), (color[1] / 255.0f), (color[2] / 255.0f));
         window.create();
+
+
+
+
+        initResources();
+
+
         mesh.create();
         shader.create();
         Input.init(window.getWindow());
 
         // TODO: Set up menus, etc.
+
+
 
 
 
@@ -97,6 +94,19 @@ public class Main implements Runnable
         renderer.renderMesh(mesh);
         window.swapBuffers();
         // Render
+    }
+
+    public void initResources()
+    {
+        public Mesh mesh = new Mesh(new Vertex[] {
+                new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f), new Vector2f(0.0f, 0.0f)),
+                new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f), new Vector2f(0.0f, 1.0f)),
+                new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f), new Vector2f(1.0f, 1.0f)),
+                new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f), new Vector2f(1.0f, 0.0f))
+        }, new int[] {
+                0, 1, 2,
+                0, 3, 2
+        }, new Material("textures/blocks/beautiful.png"));
     }
 
     public void queryKeyInputs()
