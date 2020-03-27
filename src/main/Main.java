@@ -1,12 +1,10 @@
 package main;
 
-import engine.graphics.Mesh;
-import engine.graphics.Renderer;
-import engine.graphics.Shader;
-import engine.graphics.Vertex;
+import engine.graphics.*;
 import engine.io.Input;
 import engine.io.Window;
 import engine.logging.ConsoleOutput;
+import engine.maths.Vector2f;
 import engine.maths.Vector3f;
 import engine.utils.Color;
 import org.lwjgl.glfw.GLFW;
@@ -23,14 +21,14 @@ public class Main implements Runnable
     public static  final int WIDTH = 1280, HEIGHT = 720;
 
     public Mesh mesh = new Mesh(new Vertex[] {
-            new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f)),
-            new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f)),
-            new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f)),
-            new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f))
+            new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f), new Vector2f(0.0f, 0.0f)),
+            new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f), new Vector2f(0.0f, 1.0f)),
+            new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f), new Vector2f(1.0f, 1.0f)),
+            new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f), new Vector2f(1.0f, 0.0f))
     }, new int[] {
             0, 1, 2,
             0, 3, 2
-    });
+    }, new Material("/textures/blocks/memory.png"));
 
 
 

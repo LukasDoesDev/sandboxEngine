@@ -13,18 +13,24 @@ public class Mesh
 {
     private Vertex[] vertices;
     private int[] indices;
-    private int vao, pbo, ibo, cbo;
+    private Material material;
+    private int vao, pbo, ibo, cbo, tbo;
 
-    public Mesh(Vertex[] vertices, int[] indices)
+    public Mesh(Vertex[] vertices, int[] indices, Material material)
     {
         this.vertices = vertices;
         this.indices = indices;
+        this.material = material;
     }
 
     public void create()
     {
+        material.create();
+
         vao = GL30.glGenVertexArrays();
         GL30.glBindVertexArray(vao);
+
+
 
         FloatBuffer positionBuffer = MemoryUtil.memAllocFloat(vertices.length * 3);
         float[] positionData = new float[vertices.length * 3];
@@ -37,6 +43,8 @@ public class Mesh
 
         pbo = storeData(positionBuffer, 0, 3);
 
+
+
         FloatBuffer colorBuffer = MemoryUtil.memAllocFloat(vertices.length * 3);
         float[] colorData = new float[vertices.length * 3];
         for (int i = 0; i < vertices.length; i++)
@@ -48,6 +56,22 @@ public class Mesh
         colorBuffer.put(colorData).flip();
 
         cbo = storeData(colorBuffer, 1, 3);
+
+
+
+        FloatBuffer textureBuffer = MemoryUtil.memAllocFloat(vertices.length * 3);
+        float[] textureData = new float[vertices.length * 3];
+        for (int i = 0; i < vertices.length; i++)
+        {
+            textureData[i * 3] = vertices[i].getTextureCoord().getX();
+            textureData[i * 3 + 1] = vertices[i].getTextureCoord().getY();
+        }
+        textureBuffer.put(textureData).flip();
+
+        tbo = storeData(colorBuffer, 2, 2);
+
+
+
 
         IntBuffer indicesBuffer = MemoryUtil.memAllocInt(indices.length);
         indicesBuffer.put(indices).flip();
@@ -73,8 +97,11 @@ public class Mesh
         GL15.glDeleteBuffers(pbo);
         GL15.glDeleteBuffers(cbo);
         GL15.glDeleteBuffers(ibo);
+        GL15.glDeleteBuffers(tbo);
 
         GL30.glDeleteVertexArrays(vao);
+
+        material.destroy();
     }
 
 
@@ -88,5 +115,9 @@ public class Mesh
 
     public int getCBO() { return cbo; }
 
+    public int getTBO() { return tbo; }
+
     public int getIBO() { return ibo; }
+
+    public Material getMaterial() { return material; }
 }
