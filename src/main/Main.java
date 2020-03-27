@@ -49,11 +49,14 @@ public class Main implements Runnable
         shader = new Shader("/shaders/mainVertex.glsl", "/shaders/mainFragment.glsl");
         renderer = new Renderer(shader);
 
-        int[] color = Color.hex2rgb("443737");
+        int[] color = Color.hex2rgb("414141");
         String colorString = Arrays.toString(color);
         ConsoleOutput.printMessage(colorString);
 
-        window.setBackgroundColor(color[0], color[1], color[2]);
+        ConsoleOutput.printMessage(String.valueOf(color[0] / 255.0f) + ", " + String.valueOf(color[1] / 255.0f) + ", " + String.valueOf(color[2] / 255.0f));
+
+
+        window.setBackgroundColor((color[0] / 255.0f), (color[1] / 255.0f), (color[2] / 255.0f));
         window.create();
         mesh.create();
         shader.create();
@@ -75,7 +78,7 @@ public class Main implements Runnable
         {
             update();
             render();
-            if (Input.isKeyPressed(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
+            queryKeyInputs();
         }
         ConsoleOutput.printMessage("Exited Game.");
         window.destroy(); // Destroys Input callbacks and closes window
@@ -98,7 +101,9 @@ public class Main implements Runnable
         // Render
     }
 
-    public void queryKeyInputs() {
+    public void queryKeyInputs()
+    {
+        if (Input.isKeyPressed(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
 
         Input.update();
     }
