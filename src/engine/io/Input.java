@@ -17,42 +17,27 @@ public class Input {
     private static long mouseDoubleClickPeriodNS = 1000_000_000 / 5; // 5th of a second, in nanoseconds
     private static double mouseX, mouseY;
     private static double scrollX, scrollY;
+    private static long window;
 
-    private static GLFWKeyCallback keyboard;
-    private static GLFWCursorPosCallback mouseMove;
-    private static GLFWMouseButtonCallback mouseButtons;
-    private static GLFWScrollCallback mouseScroll;
+    public static void init(long window) {
+        Input.window = window;
+        GLFW.glfwSetKeyCallback(window, (windowHandle, key, scancode, action, mods) -> {
+            activeKeys[key] = action != GLFW.GLFW_RELEASE;
+            keyStates[key] = action;
+        });
+        GLFW.glfwSetCursorPosCallback(window, (windowHandle, xpos, ypos) -> {
+            mouseX = xpos;
+            mouseY = ypos;
+        });
+        GLFW.glfwSetMouseButtonCallback(window, (windowHandle, button, action, mods) -> {
+            activeButtons[button] = (action != GLFW.GLFW_RELEASE);
+            buttonStates[button] = action;
+        });
 
-    public static void init() {
-        keyboard = new GLFWKeyCallback() {
-            @Override
-            public void invoke(long window, int key, int scancode, int action, int mods) {
-                activeKeys[key] = (action != GLFW.GLFW_RELEASE);
-                keyStates[key] = action;
-            }
-        };
-        mouseMove = new GLFWCursorPosCallback() {
-            @Override
-            public void invoke(long window, double xpos, double ypos) {
-                mouseX = xpos;
-                mouseY = ypos;
-            }
-        };
-        mouseButtons = new GLFWMouseButtonCallback() {
-            @Override
-            public void invoke(long window, int button, int action, int mods) {
-                activeButtons[button] = (action != GLFW.GLFW_RELEASE);
-                buttonStates[button] = action;
-            }
-        };
-
-        mouseScroll = new GLFWScrollCallback() {
-            @Override
-            public void invoke(long window, double xoffset, double yoffset) {
-                scrollX += xoffset;
-                scrollY += yoffset;
-            }
-        };
+        GLFW.glfwSetScrollCallback(window, (windowHandle, xoffset, yoffset) -> {
+            scrollX += xoffset;
+            scrollY += yoffset;
+        });
 
         update();
     }
@@ -138,14 +123,14 @@ public class Input {
     public static void destroy()
     {
         ConsoleOutput.printMessage("input.destroy()");
-        if (keyboard == null)
+        /*if (keyboard == null)
         {
             ConsoleOutput.printMessage("keyboard is null");
         }
         keyboard.free();
         mouseMove.free();
         mouseButtons.free();
-        mouseScroll.free();
+        mouseScroll.free();*/
     }
 
     public static double getMouseX() { return mouseX; }
@@ -155,15 +140,5 @@ public class Input {
     public static double getScrollX() { return scrollX; }
 
     public static double getScrollY() { return scrollY; }
-
-    public static GLFWKeyCallback getKeyboardCallback() { return keyboard; }
-
-    public static GLFWCursorPosCallback getMouseMoveCallback() { return mouseMove; }
-
-    public static GLFWMouseButtonCallback getMouseButtonsCallback() { return mouseButtons; }
-
-    public static GLFWScrollCallback getMouseScrollCallback() { return mouseScroll; }
-
-
 
 }

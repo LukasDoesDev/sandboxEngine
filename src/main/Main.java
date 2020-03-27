@@ -58,7 +58,7 @@ public class Main implements Runnable
         window.create();
         mesh.create();
         shader.create();
-        Input.init();
+        Input.init(window.getWindow());
 
         // TODO: Set up menus, etc.
 
