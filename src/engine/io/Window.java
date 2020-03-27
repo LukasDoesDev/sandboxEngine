@@ -101,10 +101,10 @@ public class Window
                 isResized = true;
             }
         };
-        GLFW.glfwSetKeyCallback(window, Input.getKeyboardCallback());
+        /*GLFW.glfwSetKeyCallback(window, Input.getKeyboardCallback());
         GLFW.glfwSetCursorPosCallback(window, Input.getMouseMoveCallback());
         GLFW.glfwSetMouseButtonCallback(window, Input.getMouseButtonsCallback());
-        GLFW.glfwSetScrollCallback(window, Input.getMouseScrollCallback());
+        GLFW.glfwSetScrollCallback(window, Input.getMouseScrollCallback());*/
         GLFW.glfwSetFramebufferSizeCallback(window, sizeCallback);
     }
 
