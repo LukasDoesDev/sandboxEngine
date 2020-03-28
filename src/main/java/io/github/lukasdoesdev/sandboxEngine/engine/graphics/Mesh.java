@@ -59,7 +59,7 @@ public class Mesh
 
 
 
-        FloatBuffer textureBuffer = MemoryUtil.memAllocFloat(vertices.length * 3);
+        FloatBuffer textureBuffer = MemoryUtil.memAllocFloat(vertices.length * 2);
         float[] textureData = new float[vertices.length * 2];
         for (int i = 0; i < vertices.length; i++)
         {
@@ -80,6 +80,10 @@ public class Mesh
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo);
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL15.GL_STATIC_DRAW);
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
+        MemoryUtil.memFree(positionBuffer);
+        MemoryUtil.memFree(colorBuffer);
+        MemoryUtil.memFree(textureBuffer);
+        MemoryUtil.memFree(indicesBuffer);
     }
 
     private int storeData(FloatBuffer buffer, int index, int size)
