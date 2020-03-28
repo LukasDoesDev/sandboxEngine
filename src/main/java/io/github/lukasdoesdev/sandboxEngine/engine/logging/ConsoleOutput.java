@@ -2,6 +2,9 @@ package io.github.lukasdoesdev.sandboxEngine.engine.logging;
 
 import io.github.lukasdoesdev.sandboxEngine.engine.utils.Clock;
 
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
+
 public class ConsoleOutput {
     public static void printMessage(String message) {
         Clock.updateClock();
@@ -9,11 +12,11 @@ public class ConsoleOutput {
         int minute = Clock.getMinute();
         int second = Clock.getSecond();
         System.out.println(
-                "[" + Clock.getDay() + "/" + Clock.getMonth()
+                ansi().fg(WHITE).a("[" + Clock.getDay() + "/" + Clock.getMonth()
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
-                        + "INFO: " + message
+                        + "INFO: " + message).reset()
         );
     }
 
@@ -23,11 +26,11 @@ public class ConsoleOutput {
         int minute = Clock.getMinute();
         int second = Clock.getSecond();
         System.err.println(
-                "[" + Clock.getDay() + "/" + Clock.getMonth()
+                ansi().fg(RED).a("[" + Clock.getDay() + "/" + Clock.getMonth()
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
-                        + "ERROR: " + errorMessage
+                        + "ERROR: " + errorMessage).reset()
         );
     }
 
@@ -37,11 +40,11 @@ public class ConsoleOutput {
         int minute = Clock.getMinute();
         int second = Clock.getSecond();
         System.err.print(
-                "[" + Clock.getDay() + "/" + Clock.getMonth()
+                ansi().fg(RED).a("[" + Clock.getDay() + "/" + Clock.getMonth()
                         + "/" + Clock.getYear() + " " + hour
                         + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + "]"
                         + " "
-                        + "EXEPTION: "
+                        + "EXEPTION: ").reset()
         );
         excp.printStackTrace();
     }
