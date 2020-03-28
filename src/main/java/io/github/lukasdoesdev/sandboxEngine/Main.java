@@ -7,6 +7,7 @@ import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
 import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector2f;
 import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector3f;
 import io.github.lukasdoesdev.sandboxEngine.engine.utils.Color;
+import org.fusesource.jansi.AnsiConsole;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.Arrays;
@@ -69,6 +70,7 @@ public class Main implements Runnable
 
     public void run()
     {
+        AnsiConsole.systemInstall();
         init();
         while (!window.shouldClose() && !Input.isKeyDown(GLFW.GLFW_KEY_ESCAPE))
         {
@@ -78,6 +80,7 @@ public class Main implements Runnable
         }
         close();
         ConsoleOutput.printMessage("Exited Game.");
+        AnsiConsole.systemUninstall();
     }
 
 
