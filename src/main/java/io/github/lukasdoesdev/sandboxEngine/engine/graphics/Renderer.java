@@ -28,6 +28,12 @@ public class Renderer {
         shader.unbind();
     }
 
+
+
+    /**
+     * Takes in a Mesh and renders it.
+     * @param mesh Mesh that will get rendered.
+     */
     public void renderMesh(Mesh mesh) {
         GL30.glBindVertexArray(mesh.getVAO());
         GL30.glEnableVertexAttribArray(0);

@@ -23,10 +23,10 @@ public class Mesh
         this.material = material;
     }
 
+
+
     public void create()
     {
-        //material.create();
-
         vao = GL30.glGenVertexArrays();
         GL30.glBindVertexArray(vao);
 
@@ -80,6 +80,7 @@ public class Mesh
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo);
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL15.GL_STATIC_DRAW);
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
+
         MemoryUtil.memFree(positionBuffer);
         MemoryUtil.memFree(colorBuffer);
         MemoryUtil.memFree(textureBuffer);
@@ -114,13 +115,9 @@ public class Mesh
     public int[] getIndices() { return indices; }
 
     public int getVAO() { return vao; }
-
     public int getPBO() { return pbo; }
-
     public int getCBO() { return cbo; }
-
     public int getTBO() { return tbo; }
-
     public int getIBO() { return ibo; }
 
     public Material getMaterial() { return material; }

@@ -15,21 +15,23 @@ import java.util.Arrays;
 public class Main implements Runnable
 {
 
-    public Thread game;
-    public static Window window;
-    public Renderer renderer;
-    public Shader shader;
-    public Mesh mesh;
-    public static  final int WIDTH = 1280, HEIGHT = 720;
+    private Thread game;
+    private static Window window;
+    private Renderer renderer;
+    private Shader shader;
+    private Mesh mesh;
+    private static final int WIDTH = 1280, HEIGHT = 720;
 
-    public void start()
+    private void start()
     {
         game = new Thread(this,"game");
         game.start();
     }
 
 
-
+    /**
+     * Initialize sandboxer.
+     */
     public void init()
     {
         ConsoleOutput.printMessage("Initializing sandboxer!");
@@ -38,11 +40,6 @@ public class Main implements Runnable
         renderer = new Renderer(shader);
 
         int[] color = Color.hex2rgb("414141");
-        String colorString = Arrays.toString(color);
-        ConsoleOutput.printMessage(colorString);
-
-        ConsoleOutput.printMessage(String.valueOf(color[0] / 255.0f) + ", " + String.valueOf(color[1] / 255.0f) + ", " + String.valueOf(color[2] / 255.0f));
-
 
         window.setBackgroundColor((color[0] / 255.0f), (color[1] / 255.0f), (color[2] / 255.0f));
         window.create();
@@ -67,7 +64,10 @@ public class Main implements Runnable
     }
 
 
-
+    /**
+     * Run the game.
+     * Also has the gameloop.
+     */
     public void run()
     {
         AnsiConsole.systemInstall();
@@ -100,6 +100,9 @@ public class Main implements Runnable
         // Render
     }
 
+    /**
+     * Initialized resources like Meshes etc.
+     */
     public void initResources()
     {
         mesh = new Mesh(new Vertex[] {
@@ -113,6 +116,9 @@ public class Main implements Runnable
         }, new Material("textures/blocks/beautiful.png"));
     }
 
+    /**
+     * Queries key inputs.
+     */
     public void queryKeyInputs()
     {
         if (Input.isKeyPressed(GLFW.GLFW_KEY_F11)) { window.setFullscreen(!window.isFullscreen()); }
@@ -127,6 +133,7 @@ public class Main implements Runnable
         shader.destroy();
 
     }
+
 
 
 

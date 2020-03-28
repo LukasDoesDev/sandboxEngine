@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class FileUtils {
+    /**
+     * Loads a text file.
+     * @param path Path to file.
+     * @return Text inside file.
+     */
     public static String loadAsString(String path) {
         StringBuilder result = new StringBuilder();
 

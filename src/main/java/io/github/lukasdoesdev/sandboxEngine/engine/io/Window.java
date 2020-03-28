@@ -10,35 +10,43 @@ import org.lwjgl.opengl.GL11;
 
 public class Window
 {
-    private int width, height;
+    private int width, height;           // Current width and height
 
-    private int savedWidth, savedHeight; // so the user gets the same size as before fullscreen, same with position
+    private int savedWidth, savedHeight; // Width and height get saved here when going fullscreen.
 
-    private int savedPosX, savedPosY;    //
+    private int savedPosX, savedPosY;    // Positions get saved here when going fullscreen.
 
-    private GLFWVidMode videoMode;
+    private GLFWVidMode videoMode;       // GLFW Video Mode
 
-    private String title;
+    private String title;                // Window title.
 
-    private long window;
+    private long window;                 // The window.
 
-    private int frames;
+    private int frames;                  // FPS counter?
 
-    private static long time;
+    private static long time;            // For the FPS counter?
 
-    private Input input;
+    private Vector3f background = new
+            Vector3f(0, 0, 0); // Background Color.
 
-    private Vector3f background = new Vector3f(0, 0, 0);
+    private GLFWFramebufferSizeCallback
+            sizeCallback;               // Size callback.
 
-    private GLFWFramebufferSizeCallback sizeCallback;
+    private boolean isResized;          // When resizing, true otherwise, false.
 
-    private boolean isResized;
+    private boolean isFullscreen;       // If fullscreen, true otherwise, false.
 
-    private boolean isFullscreen;
+    private int[]
+            windowPosX = new int[1],    // Window X Position.
+            windowPosY = new int[1];    // Window Y Position.
 
-    private int[] windowPosX = new int[1], windowPosY = new int[1];
 
-
+    /**
+     * What does the name say?
+     * @param width Window width
+     * @param height Window height
+     * @param title Window title
+     */
     public Window(int width, int height, String title)
     {
         this.width = width;
@@ -47,6 +55,9 @@ public class Window
     }
 
 
+    /**
+     * Initialize GLFW, window, etc.
+     */
     public void create()
     {
 
@@ -98,10 +109,6 @@ public class Window
                 isResized = true;
             }
         };
-        /*GLFW.glfwSetKeyCallback(window, Input.getKeyboardCallback());
-        GLFW.glfwSetCursorPosCallback(window, Input.getMouseMoveCallback());
-        GLFW.glfwSetMouseButtonCallback(window, Input.getMouseButtonsCallback());
-        GLFW.glfwSetScrollCallback(window, Input.getMouseScrollCallback());*/
         GLFW.glfwSetFramebufferSizeCallback(window, sizeCallback);
     }
 
@@ -137,6 +144,12 @@ public class Window
         GLFW.glfwTerminate();
     }
 
+    /**
+     * Set the background color of the window.
+     * @param r Red
+     * @param g Green
+     * @param b Blue
+     */
     public void setBackgroundColor(float r, float g, float b) { background.set(r, g, b); }
 
     public boolean isResized() { return isResized; }
