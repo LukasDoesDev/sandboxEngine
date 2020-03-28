@@ -1,12 +1,4 @@
-package engine.graphics;
-
-import engine.logging.ConsoleOutput;
-import engine.graphics.Texture;
-import static org.lwjgl.opengl.GL46.*;
-import org.lwjgl.system.MemoryStack;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
 public class Material
 {

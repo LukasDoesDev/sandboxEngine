@@ -1,7 +1,7 @@
-package engine.graphics;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
-import engine.logging.ConsoleOutput;
-import engine.utils.FileUtils;
+import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
+import io.github.lukasdoesdev.sandboxEngine.engine.utils.FileUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 

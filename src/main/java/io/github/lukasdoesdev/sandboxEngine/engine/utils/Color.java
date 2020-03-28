@@ -1,4 +1,4 @@
-package engine.utils;
+package io.github.lukasdoesdev.sandboxEngine.engine.utils;
 
 public class Color {
 

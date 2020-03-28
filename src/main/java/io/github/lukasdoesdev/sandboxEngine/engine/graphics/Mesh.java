@@ -1,4 +1,4 @@
-package engine.graphics;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -60,15 +60,15 @@ public class Mesh
 
 
         FloatBuffer textureBuffer = MemoryUtil.memAllocFloat(vertices.length * 3);
-        float[] textureData = new float[vertices.length * 3];
+        float[] textureData = new float[vertices.length * 2];
         for (int i = 0; i < vertices.length; i++)
         {
-            textureData[i * 3] = vertices[i].getTextureCoord().getX();
-            textureData[i * 3 + 1] = vertices[i].getTextureCoord().getY();
+            textureData[i * 2] = vertices[i].getTextureCoord().getX();
+            textureData[i * 2 + 1] = vertices[i].getTextureCoord().getY();
         }
         textureBuffer.put(textureData).flip();
 
-        tbo = storeData(colorBuffer, 2, 2);
+        tbo = storeData(textureBuffer, 2, 2);
 
 
 

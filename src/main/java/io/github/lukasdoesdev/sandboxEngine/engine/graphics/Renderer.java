@@ -1,11 +1,10 @@
-package engine.graphics;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
+import io.github.lukasdoesdev.sandboxEngine.engine.io.Window;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
-
-import engine.io.Window;
 
 import static org.lwjgl.opengl.GL11.glViewport;
 

@@ -1,6 +1,6 @@
-package engine.graphics;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
-import engine.logging.ConsoleOutput;
+import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.ByteBuffer;
@@ -8,8 +8,6 @@ import java.nio.IntBuffer;
 
 import static org.lwjgl.opengl.GL46.*;
 import static org.lwjgl.stb.STBImage.*;
-
-import org.lwjgl.system.MemoryStack;
 
 public class Texture {
 

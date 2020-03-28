@@ -1,4 +1,4 @@
-package engine.maths;
+package io.github.lukasdoesdev.sandboxEngine.engine.maths;
 
 public class Vector2f
 {

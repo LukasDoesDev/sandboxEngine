@@ -1,7 +1,7 @@
-package engine.io;
+package io.github.lukasdoesdev.sandboxEngine.engine.io;
 
-import engine.logging.ConsoleOutput;
-import engine.maths.Vector3f;
+import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
+import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector3f;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;

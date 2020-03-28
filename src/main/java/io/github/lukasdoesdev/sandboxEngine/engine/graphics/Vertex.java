@@ -1,7 +1,7 @@
-package engine.graphics;
+package io.github.lukasdoesdev.sandboxEngine.engine.graphics;
 
-import engine.maths.Vector2f;
-import engine.maths.Vector3f;
+import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector2f;
+import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector3f;
 
 public class Vertex
 {

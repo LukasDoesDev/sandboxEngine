@@ -1,9 +1,7 @@
-package engine.io;
+package io.github.lukasdoesdev.sandboxEngine.engine.io;
 
-import engine.logging.ConsoleOutput;
+import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
 import org.lwjgl.glfw.*;
-
-import java.io.Console;
 
 public class Input {
     private static final int NO_STATE = -1;

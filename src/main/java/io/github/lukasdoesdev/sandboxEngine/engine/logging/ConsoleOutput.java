@@ -1,6 +1,6 @@
-package engine.logging;
+package io.github.lukasdoesdev.sandboxEngine.engine.logging;
 
-import engine.utils.Clock;
+import io.github.lukasdoesdev.sandboxEngine.engine.utils.Clock;
 
 public class ConsoleOutput {
     public static void printMessage(String message) {

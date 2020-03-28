@@ -1,12 +1,12 @@
-package main;
+package io.github.lukasdoesdev.sandboxEngine;
 
-import engine.graphics.*;
-import engine.io.Input;
-import engine.io.Window;
-import engine.logging.ConsoleOutput;
-import engine.maths.Vector2f;
-import engine.maths.Vector3f;
-import engine.utils.Color;
+import io.github.lukasdoesdev.sandboxEngine.engine.graphics.*;
+import io.github.lukasdoesdev.sandboxEngine.engine.io.Input;
+import io.github.lukasdoesdev.sandboxEngine.engine.io.Window;
+import io.github.lukasdoesdev.sandboxEngine.engine.logging.ConsoleOutput;
+import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector2f;
+import io.github.lukasdoesdev.sandboxEngine.engine.maths.Vector3f;
+import io.github.lukasdoesdev.sandboxEngine.engine.utils.Color;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.Arrays;
@@ -18,6 +18,7 @@ public class Main implements Runnable
     public static Window window;
     public Renderer renderer;
     public Shader shader;
+    public Mesh mesh;
     public static  final int WIDTH = 1280, HEIGHT = 720;
 
     public void start()
@@ -98,14 +99,14 @@ public class Main implements Runnable
 
     public void initResources()
     {
-        public Mesh mesh = new Mesh(new Vertex[] {
+        mesh = new Mesh(new Vertex[] {
                 new Vertex(new Vector3f(-0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 0.0f, 0.0f), new Vector2f(0.0f, 0.0f)),
                 new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f), new Vector2f(0.0f, 1.0f)),
                 new Vertex(new Vector3f( 0.5f, -0.5f, 0.0f), new Vector3f(0.0f, 0.0f, 1.0f), new Vector2f(1.0f, 1.0f)),
                 new Vertex(new Vector3f( 0.5f,  0.5f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f), new Vector2f(1.0f, 0.0f))
         }, new int[] {
-                0, 1, 2,
-                0, 3, 2
+                0, 1, 3,
+                3, 1, 2
         }, new Material("textures/blocks/beautiful.png"));
     }
 
